@@ -41,7 +41,7 @@ def main():
         method = cv2.optflow.createOptFlow_PCAFlow()
         params = [None]
         draw_flow(args.algorithm, method.calc, video_path, params, to_gray=True)
-#
+# The best methods
     elif args.algorithm == "tvl1":
         params = [None]
         method = cv2.optflow.DualTVL1OpticalFlow_create(nscales=2,epsilon=0.05,warps=2)
@@ -52,9 +52,8 @@ def main():
         draw_flow(args.algorithm, method.calc, video_path, params, to_gray=True)#
     elif args.algorithm == "farneback":
         method = cv2.calcOpticalFlowFarneback
-        params = [None, 0.5, 3, 15, 3, 5, 1.2, 0]  #  pyr_scale=0.5, levels=2, winsize=80, iterations=2, poly_n=7, poly_sigma=4.5, flags=0
+        params = [None, 0.5, 2, 20, 3, 5, 1.2, 0]  #  pyr_scale=0.5, levels=2, winsize=80, iterations=2, poly_n=7, poly_sigma=4.5, flags=0
         draw_flow(args.algorithm, method, video_path, params, to_gray=True)
-
 
 
 if __name__ == "__main__":

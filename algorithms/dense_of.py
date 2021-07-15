@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-def draw_flow(algorithm, method, video_path, params=[], to_gray=False):
+def draw_flow(algorithm, method, video_path, params=[], to_gray=False, to_display=False):
     cap = cv2.VideoCapture(video_path)
     ret, old_frame = cap.read()
     # crate HSV & make Value a constant
@@ -33,11 +33,13 @@ def draw_flow(algorithm, method, video_path, params=[], to_gray=False):
         bgr = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
 
         vert = np.concatenate((frame_copy, bgr), axis=0)
-        # cv2.imshow("frame", frame_copy)
-        # cv2.imshow("optical flow", bgr)
         vert = cv2.resize(vert, (1200, 980))
-        out.write(vert)
-#        cv2.imshow('Horizontal Concat', vert)
+        if to_display:
+            cv2.imshow('Horizontal Concat', vert)
+        else:
+            out.write(vert)
+            #cv2.imshow("frame", frame_copy)
+            #cv2.imshow("optical flow", bgr)
         k = cv2.waitKey(25) & 0xFF
         if k == 27:
             break

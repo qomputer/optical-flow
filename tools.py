@@ -10,9 +10,9 @@ def crop_video(file, out, time= [150, 160]):
 
 #crop_video("videos/Most Dramatic Comebacks In Football 2019.mp4")
 crop_video("videos/Most Dramatic Comebacks In Football 2019.mp4", "crop_football")
+
 # Get the filename only from the initial file path.
 filename = os.path.basename("videos/NBA.mp4")
-
 # Use splitext() to get filename and extension separately.
 (file, ext) = os.path.splitext(filename)
 print(file)
@@ -109,15 +109,6 @@ def flip_bt(head):
         head.left, head.right = head.right, head.left
         flip_bt(head.left)
         flip_bt(head.right)
-
-#Memoization with lru_cache
-from functools import lru_cache
-
-@lru_cache()
-def fibonacci(n):
-    if n == 0 or n == 1:
-        return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
 def sort_dictionary(dictionary):
