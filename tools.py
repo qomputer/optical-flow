@@ -11,11 +11,6 @@ def crop_video(file, out, time= [150, 160]):
 #crop_video("videos/Most Dramatic Comebacks In Football 2019.mp4")
 crop_video("videos/Most Dramatic Comebacks In Football 2019.mp4", "crop_football")
 
-# Get the filename only from the initial file path.
-filename = os.path.basename("videos/NBA.mp4")
-# Use splitext() to get filename and extension separately.
-(file, ext) = os.path.splitext(filename)
-print(file)
 
 def timeit(func):
     @functools.wraps(func)
@@ -26,23 +21,6 @@ def timeit(func):
         return result
     return wrapper
 
-
-def check(string):
-    o_b = ('(', '[', '{')
-    o_c = (')', ']', '}')
-    stack = []
-    for s in string:
-        if s in o_b:
-            stack.append(s)
-        if s in o_c:
-            if not stack:
-                return False
-            index = o_c.index(s)
-            o_bracket = o_b[index]
-            if stack[-1] == o_bracket:
-                stack = stack[:-1]
-            else: return False
-    return (not stack)
 
 #print(check('[{([[[]]])(){}}]'))
 
